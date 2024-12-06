@@ -28,7 +28,7 @@ const Movies = () => {
             <div key={index} className="movieItem">
               <img src={movie.thumbnail.regular.large} alt={movie.title} />
               <div className="movieInfo">
-                <p>{movie.year} &#8226; <span className='icon'><img src="./icon-category-movie.svg" alt="" /></span>{movie.category} &#8226; {movie.rating}</p>
+                <p>{movie.year} &#8226; <span className='icon'><img src="./icon-category-movie.svg" alt="" /></span> {movie.category} &#8226; {movie.rating}</p>
                 <h2>{movie.title}</h2>
               </div>
             </div>

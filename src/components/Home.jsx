@@ -31,7 +31,12 @@ const Home = () => {
               <div key={index} className="videoItem">
                 <img src={video.thumbnail.trending.large} alt={video.title} />
                 <div className="videoInfo">
-                  <p>{video.year} &#8226; {video.category} &#8226; {video.rating}</p>
+                  <p>{video.year} &#8226; 
+                    <span className='icon'>{video.category === 'Movie' ? (
+                     <img src="./icon-category-movie.svg" alt="" /> 
+                     ) : ( 
+                     <img src="./icon-category-tv.svg" alt="" /> 
+                     )}</span> {video.category} &#8226; {video.rating}</p>
                   <h2>{video.title}</h2>
                 </div>
               </div>
@@ -45,7 +50,13 @@ const Home = () => {
               <div key={index} className="videoItem">
                 <img src={video.thumbnail.regular.large} alt={video.title} />
                 <div className="videoInfo">
-                  <p>{video.year} &#8226; {video.category} &#8226; {video.rating}</p>
+                  <p>{video.year} &#8226; 
+                    <span className='icon'>{video.category === 'Movie' ? (
+                     <img src="./icon-category-movie.svg" alt="" /> 
+                     ) : ( 
+                     <img src="./icon-category-tv.svg" alt="" /> 
+                     )}
+                     </span> {video.category} &#8226; {video.rating}</p>
                   <h2>{video.title}</h2>
                 </div>
               </div>
