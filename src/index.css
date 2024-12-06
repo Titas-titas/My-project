@@ -24,7 +24,6 @@
         @apply DarkBlue;
     };
     
-    
 }
 
 @layer utilities{
@@ -177,9 +176,20 @@
         margin: 0.3em;
         margin-top: 0.1em;
         border-radius: 0;
-    }
+    } 
 }
 
-
-
-
+::-webkit-scrollbar {
+    width: 8px;
+    background: #10141e
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #171e31; 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5a698f
+}
