@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+    .Bar{
+        @apply SDarkBlue p-3;
+    };
+    body{
+        @apply DarkBlue;
+    };
+    .videos, .movies, .tv-series{
+        @apply text-white;
+        p{
+        @apply text-gray-300
+        };
+        h1{
+            @apply text-3xl m-3;
+        }
+
+    };
+    .search input{
+        @apply DarkBlue;
+    };
+    
+    
+}
+
+@layer utilities{
+    /*COLORS*/
+    .DarkBlue{
+        background-color: #10141e;
+    }
+    .GrayBlue{
+        background-color: #5a698f;
+    }
+    .Red{
+        background-color: #fc4747;
+    }
+    .SDarkBlue{
+        background-color: #161d2f;
+    }
+    /*APP*/
+
+    body {
+        margin: 0;
+        overflow-x: hidden;
+    }
+    
+    .header {
+        display: flex;
+        height: 100vh;
+    }
+    .Bar {
+        width: 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 30px;
+        padding: 1.3em;
+        margin: 1.5em;
+    }
+    .Bar img {
+        margin-bottom: 1.8em;
+    }
+    .nav-item img {
+        margin-bottom: 1.8em;
+    }
+    .profile-container {
+        margin-top: auto;
+    }
+    .profile-picture {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    .films {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+    }
+
+      /*Search*/
+
+    .search input{
+        border: none;
+        width: 70%;
+        padding: 0.7em;
+        font-size: 20px;
+    }
+    .search img{
+        display: inline;
+        max-width: 10%;
+    }
+      
+      /*HOME*/
+
+    .videos {
+        padding: 1em;
+    }      
+    .videoListSecond {
+        display: flex;
+        flex-wrap: wrap;
+    } 
+    .videoListFirst {
+        display: flex;
+        overflow-x: scroll;
+    }
+    .videoItem {
+        flex: 0 0 auto;
+        margin: 0.5rem
+    } 
+    .videoItem img {
+        width: 42vh;
+        border-radius: 20px;
+    }
+    .videoInfo {
+        margin-top: 10px;
+    }
+
+      /*Movies*/
+
+    .movies {
+        padding: 1em;
+    }
+    .movieList {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .movieItem {
+        flex: 0 0 auto;
+        margin: 0.5rem
+    }
+    .movieItem img {
+        width: 42vh;
+        border-radius: 20px;
+    }
+    .movieInfo {
+        margin-top: 10px;
+    }
+
+    /*TV*/
+
+    .tv-series {
+        padding: 1em;
+    }
+    .seriesList {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .seriesItem {
+        flex: 0 0 auto;
+        margin: 0.5rem
+    }
+    .seriesItem img {
+        width: 42vh;
+        border-radius: 20px;
+    }
+    .seriesInfo {
+        margin-top: 10px;
+    }
+
+    /*others*/
+
+    h2 {
+        font-size: 1.3em;
+        margin: 5px 0 0 0;
+    }
+    p {
+        font-size: 0.8em;
+    }
+    .icon img{
+        display: inline;
+        width: 0.9em;
+        margin: 0.3em;
+        margin-top: 0.1em;
+        border-radius: 0;
+    }
+}
+
+
+
+
