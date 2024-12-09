@@ -26,6 +26,14 @@ const Home = () => {
     setSearchParams(value ? { search: value } : {});
   };
 
+  const handleBookmark = (video) => {
+    setVideos((prev) =>
+      prev.map((item) =>
+        item.title === video.title ? { ...item, isBookmarked: !item.isBookmarked } : item
+      )
+    );
+  };
+
   const trending_Videos = videos.filter(video => video.isTrending);
   const recommended_Videos = videos.filter(video => !video.isTrending);
 
@@ -54,7 +62,7 @@ const Home = () => {
           <div className="videoListFirst">
             {filteredTrendingVideos.map((video, index) => (
               <div key={index} className="videoItem">
-                <img src={video.thumbnail.trending.large} alt={video.title} />
+                <img src={video.thumbnail?.trending?.large} alt={video.title} />
                 <div className="videoInfo">
                   <p>{video.year} &#8226; 
                     <span className='icon'>{video.category === 'Movie' ? (
@@ -63,6 +71,9 @@ const Home = () => {
                      <img src="./icon-category-tv.svg" alt="TV Series" /> 
                      )}</span> {video.category} &#8226; {video.rating}</p>
                   <h2>{video.title}</h2>
+                  <button className='bookmark' onClick={() => handleBookmark(video)}>
+                  <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                  </button>
                 </div>
               </div>
             ))}
@@ -73,7 +84,7 @@ const Home = () => {
           <div className="videoListSecond">
             {filteredRecommendedVideos.map((video, index) => (
               <div key={index} className="videoItem">
-                <img src={video.thumbnail.regular.large} alt={video.title} />
+                <img src={video.thumbnail?.regular?.large} alt={video.title} />
                 <div className="videoInfo">
                   <p>{video.year} &#8226; 
                     <span className='icon'>{video.category === 'Movie' ? (
@@ -83,6 +94,11 @@ const Home = () => {
                      )}
                      </span> {video.category} &#8226; {video.rating}</p>
                   <h2>{video.title}</h2>
+                  
+                    <button className='bookmark' onClick={() => handleBookmark(video)}>
+                      <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                    </button>
+            
                 </div>
               </div>
             ))}
@@ -94,3 +110,4 @@ const Home = () => {
 };
 
 export default Home;
+

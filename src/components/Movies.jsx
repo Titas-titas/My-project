@@ -27,6 +27,14 @@ const Movies = () => {
     setSearchParams(value ? { search: value } : {});
   };
 
+  const handleBookmark = (movie) => {
+    setMovies((prev) =>
+      prev.map((item) =>
+        item.title === movie.title ? { ...item, isBookmarked: !item.isBookmarked } : item
+      )
+    );
+  };
+
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -35,7 +43,7 @@ const Movies = () => {
     <>
       <div className="movies">
         <p className='search'>
-          <img src="./icon-search.svg" alt="Search" />
+          <img src="./icon-search.svg" alt="Search Icon" />
           <input 
             type="text" 
             placeholder='Search for movies' 
@@ -43,14 +51,21 @@ const Movies = () => {
             onChange={handleSearch}
           />
         </p>
+        
         <h1>Movies</h1>
         <div className="movieList">
           {filteredMovies.map((movie, index) => (
             <div key={index} className="movieItem">
-              <img src={movie.thumbnail.regular.large} alt={movie.title} />
+              <img src={movie.thumbnail?.regular?.large} alt={movie.title} />
               <div className="movieInfo">
-                <p>{movie.year} &#8226; <span className='icon'><img src="./icon-category-movie.svg" alt="" /></span> {movie.category} &#8226; {movie.rating}</p>
+                <p>{movie.year} &#8226; 
+                  <span className='icon'>
+                    <img src="./icon-category-movie.svg" alt="Movie Category Icon" />
+                  </span> {movie.category} &#8226; {movie.rating}</p>
                 <h2>{movie.title}</h2>
+                <button className='bookmark' onClick={() => handleBookmark(movie)}>
+                <span className='bookmarkStyle'><img src={movie.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark Icon" /></span>
+                </button>
               </div>
             </div>
           ))}

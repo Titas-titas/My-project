@@ -40,6 +40,7 @@
     .SDarkBlue{
         background-color: #161d2f;
     }
+
     /*APP*/
 
     body {
@@ -81,19 +82,6 @@
         padding: 2em;
     }
 
-      /*Search*/
-
-    .search input{
-        border: none;
-        width: 70%;
-        padding: 0.7em;
-        font-size: 20px;
-    }
-    .search img{
-        display: inline;
-        max-width: 10%;
-    }
-      
       /*HOME*/
 
     .videos {
@@ -109,7 +97,8 @@
     }
     .videoItem {
         flex: 0 0 auto;
-        margin: 0.5rem
+        margin: 0.5rem;
+        position: relative;
     } 
     .videoItem img {
         width: 40vh;
@@ -130,7 +119,8 @@
     }
     .movieItem {
         flex: 0 0 auto;
-        margin: 0.5rem
+        margin: 0.5rem;
+        position: relative;
     }
     .movieItem img{
         width: 40vh;
@@ -151,7 +141,8 @@
     }
     .seriesItem {
         flex: 0 0 auto;
-        margin: 0.5rem
+        margin: 0.5rem;
+        position: relative;
     }
     .seriesItem img {
         width: 40vh;
@@ -177,6 +168,42 @@
         margin-top: 0.1em;
         border-radius: 0;
     } 
+
+    /*Search*/
+
+    .search input{
+        border: none;
+        width: 70%;
+        padding: 0.7em;
+        font-size: 20px;
+    }
+    .search img{
+        display: inline;
+        margin: 1em;
+        margin-top: 0.1em;
+        max-width: 10%;
+    }
+      /*Bookmark*/
+
+    .bookmark {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+      
+    .bookmark img {
+        width: 10px;
+        border-radius: 0;
+    }
+    .bookmarkStyle{
+        background: #10141ec2;
+        border-radius: 50vh;
+        padding: 0.5em;
+    }
 }
 
 ::-webkit-scrollbar {
@@ -191,5 +218,5 @@
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #5a698f
+    background: #5a698fd5;
 }

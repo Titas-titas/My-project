@@ -27,6 +27,15 @@ const TVSeries = () => {
     setSearchParams(value ? { search: value } : {});
   };
 
+
+  const handleBookmark = (series) => {
+    setTVSeries((prev) =>
+      prev.map((item) =>
+        item.title === series.title ? { ...item, isBookmarked: !item.isBookmarked } : item
+      )
+    );
+  };
+
   const filteredSeries = tvSeries.filter(series =>
     series.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -35,7 +44,7 @@ const TVSeries = () => {
     <>
       <div className="tv-series">
         <p className='search'>
-          <img src="./icon-search.svg" alt="Search" />
+          <img src="./icon-search.svg" alt="Search Icon" />
           <input 
             type="text" 
             placeholder='Search for TV series' 
@@ -47,10 +56,16 @@ const TVSeries = () => {
         <div className="seriesList">
           {filteredSeries.map((series, index) => (
             <div key={index} className="seriesItem">
-              <img src={series.thumbnail.regular.large} alt={series.title} />
+              <img src={series.thumbnail?.regular?.large} alt={series.title} />
               <div className="seriesInfo">
-                <p>{series.year} &#8226; <span className='icon'><img src="./icon-category-tv.svg" alt="" /></span> {series.category} &#8226; {series.rating}</p>
+                <p>{series.year} &#8226; 
+                  <span className='icon'>
+                    <img src="./icon-category-tv.svg" alt="TV Series Category Icon" />
+                  </span> {series.category} &#8226; {series.rating}</p>
                 <h2>{series.title}</h2>
+                <button className='bookmark' onClick={() => handleBookmark(series)}>
+                  <span className='bookmarkStyle'><img src={series.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark Icon" /></span>
+                </button>
               </div>
             </div>
           ))}
