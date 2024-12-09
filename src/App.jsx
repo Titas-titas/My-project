@@ -9,13 +9,16 @@ function App() {
     <>
       <div className="header">
         <div className="Bar">
-          <img src="/logo.svg" alt="Logo" />
+          <div className="logo">
+            <img src="/logo.svg" alt="Logo" />
+          </div>
+          <div className="grupe">
           <Link to='/' className="nav-item"><img src="/icon-nav-home.svg" alt="Home" /></Link>
           <Link to='/movies' className="nav-item"><img src="/icon-nav-movies.svg" alt="Movies" /></Link>
           <Link to='/series' className="nav-item"><img src="/icon-nav-tv-series.svg" alt="TV Series" /></Link>
-          <Link to='/bookmarks' className="nav-item"><img src="/icon-nav-bookmark.svg" alt="Bookmarks" /></Link>
+          <Link to='/bookmarks' className="nav-item"><img src="/icon-nav-bookmark.svg" alt="Bookmarks" /></Link></div>
           <div className="profile-container">
-            <img src="/profile-picture.jpg" alt="Profile" className="profile-picture" />
+            <img src="/image-avatar.png" alt="Profile" className="profile-picture" />
           </div>
         </div>
       

@@ -204,6 +204,58 @@
         border-radius: 50vh;
         padding: 0.5em;
     }
+    .bookmarkStyle:hover{
+        background:#fff;
+        img{
+            filter: brightness(0)
+        }
+    }
+
+    /*** tablet ***/
+    @media only screen and (max-width: 768px) {
+
+        /*APP*/
+        .header {
+            flex-direction: column;
+          }
+          .Bar {
+            width: auto;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0.5em;
+            margin: 1.5em;
+          }
+          
+          .Bar img, .nav-item img {
+            margin-bottom: 0;
+          }
+          .profile-container {
+            margin-top: 0;
+            padding: 0.3em;
+          }
+          .logo{
+            padding: 0.3em;
+          }
+          .films {
+            padding: 1em;
+          }
+          .nav-item {
+            text-align: center;
+            padding: 0.5em;
+          }
+          .nav-item img {
+            width: 20px;
+          }
+          .grupe{
+            display: flex;
+            flex-direction: row;
+          }
+
+      }
+
+
+
+
 }
 
 ::-webkit-scrollbar {
