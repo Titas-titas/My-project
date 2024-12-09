@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router';
 
 const TVSeries = () => {
   const [tvSeries, setTVSeries] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,13 +20,32 @@ const TVSeries = () => {
     fetchData();
   }, []);
 
+  const searchQuery = searchParams.get('search') || "";
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchParams(value ? { search: value } : {});
+  };
+
+  const filteredSeries = tvSeries.filter(series =>
+    series.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       <div className="tv-series">
-        <p className='search'><img src="./icon-search.svg" alt="" /><input type="text" placeholder='Search for TV series'/></p>
+        <p className='search'>
+          <img src="./icon-search.svg" alt="Search" />
+          <input 
+            type="text" 
+            placeholder='Search for TV series' 
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </p>
         <h1>TV Series</h1>
         <div className="seriesList">
-          {tvSeries.map((series, index) => (
+          {filteredSeries.map((series, index) => (
             <div key={index} className="seriesItem">
               <img src={series.thumbnail.regular.large} alt={series.title} />
               <div className="seriesInfo">

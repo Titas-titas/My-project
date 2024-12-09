@@ -112,7 +112,7 @@
         margin: 0.5rem
     } 
     .videoItem img {
-        width: 42vh;
+        width: 40vh;
         border-radius: 20px;
     }
     .videoInfo {
@@ -132,8 +132,8 @@
         flex: 0 0 auto;
         margin: 0.5rem
     }
-    .movieItem img {
-        width: 42vh;
+    .movieItem img{
+        width: 40vh;
         border-radius: 20px;
     }
     .movieInfo {
@@ -154,7 +154,7 @@
         margin: 0.5rem
     }
     .seriesItem img {
-        width: 42vh;
+        width: 40vh;
         border-radius: 20px;
     }
     .seriesInfo {

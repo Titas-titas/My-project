@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,13 +20,32 @@ const Movies = () => {
     fetchData();
   }, []);
 
+  const searchQuery = searchParams.get('search') || "";
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchParams(value ? { search: value } : {});
+  };
+
+  const filteredMovies = movies.filter(movie =>
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       <div className="movies">
-        <p className='search'><img src="./icon-search.svg" alt="" /><input type="text" placeholder='Search for movies'/></p>
+        <p className='search'>
+          <img src="./icon-search.svg" alt="Search" />
+          <input 
+            type="text" 
+            placeholder='Search for movies' 
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </p>
         <h1>Movies</h1>
         <div className="movieList">
-          {movies.map((movie, index) => (
+          {filteredMovies.map((movie, index) => (
             <div key={index} className="movieItem">
               <img src={movie.thumbnail.regular.large} alt={movie.title} />
               <div className="movieInfo">
