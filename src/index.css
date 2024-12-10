@@ -154,40 +154,48 @@
     
     /*Login*/
       
-      .login-container {
+    .login-container {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         height: 100vh;
-      }
-      .login-box {
+    }
+    .login-box {
         background-color: #161d2f;
         width: 55vh;
         padding: 2em;
         color:#fff;
         border-radius: 10px;
         text-align: center;
-      }
-      .login-box h2 {
+    }
+    .login-box h2 {
         margin-bottom: 20px;
         font-size: 1.8em;
         text-align: start;
-      }
-      .input-group {
+    }
+    .input-group {
         margin-bottom: 15px;
         text-align: left;
-      }
-      .input-group label {
+    }
+    .input-group label {
         display: block;
         margin-bottom: 5px;
-      }
-      .input-group input {
+    }
+    .login-logo{
+        margin-bottom: 3em;
+    }
+    .input-group input {
         width: 100%;
         border: none;
         background: #161d2f;
+        border-bottom: 1px solid #5A698F;
         border-radius: 5px;
-      }
-      .login-button {
+    }
+    .input-group input[type=email]:focus, .input-group input[type=password]:focus{
+        border-bottom: 2px solid #fff;
+    }
+    .login-button {
         width: 100%;
         padding: 10px;
         background-color: #fc4747;
@@ -195,15 +203,21 @@
         border-radius: 5px;
         color: #fff;
         font-size: 16px;
-      }
-      .signup-link {
+    }
+    .login-button:hover{
+        background-color: #fff;
+        color:#161D2F;
+    }
+    .signup-link {
         margin-top: 10px;
-      }
-      .signup-link a {
+    }
+    .signup-link a {
         color: #fc4747;
         text-decoration: none;
-      }
-
+    }
+    .signup-link a:hover{
+        color: #fff;
+    }
     /*text*/
 
     h2 {
@@ -213,6 +227,7 @@
     p {
         font-size: 0.8em;
     }
+    
 
 
     /*** tablet ***/
@@ -350,7 +365,12 @@
         width: 70%;
         padding: 0.7em;
         font-size: 20px;
+        
     }
+    .search input[type=text]:focus{
+        border-bottom: 2px solid #5A698F;
+    }
+
     .search img{
         display: inline;
         margin: 1em;
@@ -399,4 +419,9 @@
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #5a698fd5;
+}
+
+[type='text']:focus, [type='email']:focus,[type='password']:focus{
+    --tw-ring-color:none;
+    --tw-ring-shadow:none;
 }
