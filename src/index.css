@@ -74,6 +74,7 @@
         border-radius: 50%;
         width: 40px;
         height: 40px;
+        border: 0.01em solid #fff;
     }
     .films {
         flex: 1;
@@ -83,10 +84,9 @@
     }
 
       /*HOME*/
-
-    .videos {
-        padding: 1em;
-    }      
+    .videos{
+        padding: 0.1em;
+    }   
     .videoListSecond {
         display: flex;
         flex-wrap: wrap;
@@ -107,11 +107,11 @@
     .videoInfo {
         margin-top: 10px;
     }
-
+    
       /*Movies*/
 
     .movies {
-        padding: 1em;
+        padding: 0.1em;
     }
     .movieList {
         display: flex;
@@ -133,7 +133,7 @@
     /*TV*/
 
     .tv-series {
-        padding: 1em;
+        padding: 0.1em;
     }
     .seriesList {
         display: flex;
@@ -151,8 +151,8 @@
     .seriesInfo {
         margin-top: 10px;
     }
-
-    /*others*/
+    
+    /*text*/
 
     h2 {
         font-size: 1.3em;
@@ -161,6 +161,75 @@
     p {
         font-size: 0.8em;
     }
+
+    /*** tablet ***/
+    @media only screen and (max-width: 768px) {
+
+        /*APP*/
+        .header {
+            flex-direction: column;
+        }
+        .Bar {
+            width: auto;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0.5em;
+            margin: 1.5em;
+        }
+        .Bar img, .nav-item img {
+            margin-bottom: 0;
+        }
+        .profile-container {
+            margin-top: 0;
+            padding: 0.3em;
+        }
+        .logo{
+            padding: 0.3em;
+        }
+        .films {
+            padding: 1em;
+        }
+        .nav-item {
+            text-align: center;
+            padding: 0.5em;
+        }
+        .nav-item img {
+            width: 20px;
+        }
+        .grupe{
+            display: flex;
+            flex-direction: row;
+        }
+
+        /*HOME*/
+        .videoItem img {
+            width: 25vh;
+            border-radius: 20px;
+        }
+
+        /*Movies*/
+        .movieItem img{
+            width: 25vh;
+            border-radius: 20px;
+        }
+
+        /*TV*/
+        .seriesItem img {
+            width: 25vh;
+            border-radius: 20px;
+        }
+
+        /*text*/
+        h2{
+            font-size: 1em;
+        }
+        p{
+            font-size: 0.6em;
+        }
+      }
+
+    /*logo*/
+
     .icon img{
         display: inline;
         width: 0.9em;
@@ -210,52 +279,6 @@
             filter: brightness(0)
         }
     }
-
-    /*** tablet ***/
-    @media only screen and (max-width: 768px) {
-
-        /*APP*/
-        .header {
-            flex-direction: column;
-          }
-          .Bar {
-            width: auto;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 0.5em;
-            margin: 1.5em;
-          }
-          
-          .Bar img, .nav-item img {
-            margin-bottom: 0;
-          }
-          .profile-container {
-            margin-top: 0;
-            padding: 0.3em;
-          }
-          .logo{
-            padding: 0.3em;
-          }
-          .films {
-            padding: 1em;
-          }
-          .nav-item {
-            text-align: center;
-            padding: 0.5em;
-          }
-          .nav-item img {
-            width: 20px;
-          }
-          .grupe{
-            display: flex;
-            flex-direction: row;
-          }
-
-      }
-
-
-
-
 }
 
 ::-webkit-scrollbar {
