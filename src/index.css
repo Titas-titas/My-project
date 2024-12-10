@@ -105,7 +105,7 @@
         border-radius: 20px;
     }
     .videoInfo {
-        margin-top: 10px;
+        margin-top: 0.5em;
     }
     
       /*Movies*/
@@ -127,7 +127,7 @@
         border-radius: 20px;
     }
     .movieInfo {
-        margin-top: 10px;
+        margin-top: 0.5em;
     }
 
     /*TV*/
@@ -149,9 +149,61 @@
         border-radius: 20px;
     }
     .seriesInfo {
-        margin-top: 10px;
+        margin-top: 0.5em;
     }
     
+    /*Login*/
+      
+      .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .login-box {
+        background-color: #161d2f;
+        width: 55vh;
+        padding: 2em;
+        color:#fff;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .login-box h2 {
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        text-align: start;
+      }
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .input-group input {
+        width: 100%;
+        border: none;
+        background: #161d2f;
+        border-radius: 5px;
+      }
+      .login-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #fc4747;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+      }
+      .signup-link {
+        margin-top: 10px;
+      }
+      .signup-link a {
+        color: #fc4747;
+        text-decoration: none;
+      }
+
     /*text*/
 
     h2 {
@@ -280,7 +332,7 @@
         }
       }
 
-      
+
     /*logo*/
 
     .icon img{
