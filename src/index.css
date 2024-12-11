@@ -83,11 +83,12 @@
         padding: 2em;
     }
 
-      /*HOME*/
-    .videos{
+    /*HOME*//*Movies*//*TV*/
+
+    .videos, .movies, .tv-series {
         padding: 0.1em;
     }   
-    .videoListSecond {
+    .videoListSecond, .movieList, .seriesList{
         display: flex;
         flex-wrap: wrap;
     } 
@@ -95,73 +96,29 @@
         display: flex;
         overflow-x: scroll;
     }
-    .videoItem {
+    .videoItem, .seriesItem, .movieItem{
         flex: 0 0 auto;
         margin: 0.5rem;
         position: relative;
     } 
-    .videoItem img {
+    .videoItem img, .movieItem img, .seriesItem img{
         width: 40vh;
         border-radius: 20px;
     }
-    .videoInfo {
-        margin-top: 0.5em;
-    }
-    
-      /*Movies*/
-
-    .movies {
-        padding: 0.1em;
-    }
-    .movieList {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .movieItem {
-        flex: 0 0 auto;
-        margin: 0.5rem;
-        position: relative;
-    }
-    .movieItem img{
-        width: 40vh;
-        border-radius: 20px;
-    }
-    .movieInfo {
+    .videoInfo, .seriesInfo, .movieInfo{
         margin-top: 0.5em;
     }
 
-    /*TV*/
-
-    .tv-series {
-        padding: 0.1em;
-    }
-    .seriesList {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .seriesItem {
-        flex: 0 0 auto;
-        margin: 0.5rem;
-        position: relative;
-    }
-    .seriesItem img {
-        width: 40vh;
-        border-radius: 20px;
-    }
-    .seriesInfo {
-        margin-top: 0.5em;
-    }
-    
-    /*Login*/
+    /*Login and SignUp*/
       
-    .login-container {
+    .login-container, .signup-container{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         height: 100vh;
     }
-    .login-box {
+    .login-box, .signup-box{
         background-color: #161d2f;
         width: 55vh;
         padding: 2em;
@@ -169,7 +126,7 @@
         border-radius: 10px;
         text-align: center;
     }
-    .login-box h2 {
+    .login-box h2, .signup-box h2{
         margin-bottom: 20px;
         font-size: 1.8em;
         text-align: start;
@@ -177,10 +134,6 @@
     .input-group {
         margin-bottom: 15px;
         text-align: left;
-    }
-    .input-group label {
-        display: block;
-        margin-bottom: 5px;
     }
     .login-logo{
         margin-bottom: 3em;
@@ -195,7 +148,7 @@
     .input-group input[type=email]:focus, .input-group input[type=password]:focus{
         border-bottom: 2px solid #fff;
     }
-    .login-button {
+    .login-button, .signup-button{
         width: 100%;
         padding: 10px;
         background-color: #fc4747;
@@ -204,20 +157,21 @@
         color: #fff;
         font-size: 16px;
     }
-    .login-button:hover{
+    .login-button:hover, .signup-button:hover{
         background-color: #fff;
         color:#161D2F;
     }
-    .signup-link {
+    .signup-link, .login-link {
         margin-top: 10px;
     }
-    .signup-link a {
+    .signup-link a, .login-link a{
         color: #fc4747;
         text-decoration: none;
     }
-    .signup-link a:hover{
+    .signup-link a:hover, .login-link a:hover{
         color: #fff;
     }
+
     /*text*/
 
     h2 {
@@ -270,18 +224,8 @@
             flex-direction: row;
         }
 
-        /*HOME*/
-        .videoItem img {
-            width: 25vh;
-        }
-
-        /*Movies*/
-        .movieItem img{
-            width: 25vh;
-        }
-
-        /*TV*/
-        .seriesItem img {
+        /*HOME*//*Movies*//*TV*/
+        .videoItem img, .movieItem img, .seriesItem img{
             width: 25vh;
         }
 
@@ -315,20 +259,8 @@
             width: 22px;
         }
 
-        /*HOME*/
-        .videoItem img {
-            width: 22vh;
-            border-radius: 15px;
-        }
-
-        /*Movies*/
-        .movieItem img{
-            width: 22vh;
-            border-radius: 15px;
-        }
-
-        /*TV*/
-        .seriesItem img {
+        /*HOME*//*Movies*//*TV*/
+        .videoItem img, .movieItem img, .seriesItem img{
             width: 22vh;
             border-radius: 15px;
         }
