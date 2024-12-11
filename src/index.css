@@ -127,7 +127,7 @@
         text-align: center;
     }
     .login-box h2, .signup-box h2{
-        margin-bottom: 20px;
+        margin-bottom: 0.7em;
         font-size: 1.8em;
         text-align: start;
     }
@@ -155,7 +155,7 @@
         border: none;
         border-radius: 5px;
         color: #fff;
-        font-size: 16px;
+        font-size: 1em;
     }
     .login-button:hover, .signup-button:hover{
         background-color: #fff;
@@ -229,6 +229,24 @@
             width: 25vh;
         }
 
+        /*login and signup*/
+        .login-container, .signup-container{
+            height: 80vh;
+        }
+        .login-box, .signup-box{
+            width: 45vh;
+        }
+        .login-box h2, .signup-box h2{
+            margin-bottom: 0.5em;
+        }
+        .login-box p, .signup-box p{
+            padding: 0.7em;
+            font-size: 1em;
+        }
+        .input-group input {
+            margin-bottom: 0.7em;
+        }
+
         /*text*/
         h2{
             font-size: 1em;
@@ -236,6 +254,8 @@
         p{
             font-size: 0.6em;
         }
+
+
     }
 
     /*** phone ***/
@@ -263,6 +283,18 @@
         .videoItem img, .movieItem img, .seriesItem img{
             width: 22vh;
             border-radius: 15px;
+        }
+
+        /*login and signup*/
+        .login-container, .signup-container{
+            height: 75vh;
+        }
+        .login-box, .signup-box{
+            width: 37vh;
+        }
+        .login-box p, .signup-box p{
+            padding: 0.7em;
+            font-size: 0.8em;
         }
 
         /*text*/
