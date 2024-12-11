@@ -4,12 +4,17 @@
 
 
 @layer base{
-    .Bar{
-        @apply SDarkBlue p-3;
-    };
+
     body{
         @apply DarkBlue;
     };
+
+    /*App*/
+    .Bar{
+        @apply SDarkBlue p-3;
+    };
+
+    /*HOME, TV, Movies*/
     .videos, .movies, .tv-series{
         @apply text-white;
         p{
@@ -19,11 +24,41 @@
             @apply text-3xl m-3;
         }
 
+        /*phone*/
+        @media only screen and (max-width: 376px) {
+            h1{
+                @apply text-2xl m-3;
+            }
+
+        }
     };
     .search input{
         @apply DarkBlue;
     };
-    
+
+    /*login and signup*/
+    .signup-link a, .login-link a{
+        @apply TRed;
+    }
+    .login-box, .signup-box{
+        @apply text-white SDarkBlue;
+    }
+    .login-button:hover, .signup-button:hover{
+        @apply bg-white TSDarkBlue;
+    }
+    .input-group input {
+        @apply SDarkBlue;
+    }
+    .login-button, .signup-button{
+        @apply text-white Red;
+    }
+    .signup-link a, .login-link a{
+       @apply TRed;
+    }
+    .signup-link a:hover, .login-link a:hover{
+        @apply text-white;
+    }
+
 }
 
 @layer utilities{
@@ -40,7 +75,19 @@
     .SDarkBlue{
         background-color: #161d2f;
     }
-
+    /*Text colors*/
+    .TDarkBlue{
+        color: #10141e;
+    }
+    .TGrayBlue{
+        color: #5a698f;
+    }
+    .TRed{
+        color: #fc4747;
+    }
+    .TSDarkBlue{
+        color: #161d2f;
+    }
     /*APP*/
 
     body {
@@ -128,7 +175,6 @@
         display: flex;
         flex-direction: column;
         justify-content: end;
-        color: #fff;
       }
 
     /*Login and SignUp*/
@@ -141,10 +187,8 @@
         height: 100vh;
     }
     .login-box, .signup-box{
-        background-color: #161d2f;
         width: 55vh;
         padding: 2em;
-        color:#fff;
         border-radius: 10px;
         text-align: center;
     }
@@ -163,7 +207,6 @@
     .input-group input {
         width: 100%;
         border: none;
-        background: #161d2f;
         border-bottom: 1px solid #5A698F;
         border-radius: 5px;
     }
@@ -173,25 +216,12 @@
     .login-button, .signup-button{
         width: 100%;
         padding: 10px;
-        background-color: #fc4747;
         border: none;
         border-radius: 5px;
-        color: #fff;
         font-size: 1em;
-    }
-    .login-button:hover, .signup-button:hover{
-        background-color: #fff;
-        color:#161D2F;
     }
     .signup-link, .login-link {
         margin-top: 10px;
-    }
-    .signup-link a, .login-link a{
-        color: #fc4747;
-        text-decoration: none;
-    }
-    .signup-link a:hover, .login-link a:hover{
-        color: #fff;
     }
 
     /*text*/
@@ -251,6 +281,17 @@
             width: 25vh;
         }
 
+        /*Home Trending*/
+        .imageContainer {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .imageContainer img {
+            width: 60vh;
+        }
+        
+
         /*login and signup*/
         .login-container, .signup-container{
             height: 80vh;
@@ -270,6 +311,9 @@
         }
 
         /*text*/
+        h1{
+            font-size: 1em;
+        }
         h2{
             font-size: 1em;
         }
@@ -303,8 +347,18 @@
 
         /*HOME*//*Movies*//*TV*/
         .videoItem img, .movieItem img, .seriesItem img{
-            width: 22vh;
+            width: 16vh;
             border-radius: 15px;
+        }
+
+        /*Home Trending*/
+        .imageContainer {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .imageContainer img {
+            width: 30vh;
         }
 
         /*login and signup*/
