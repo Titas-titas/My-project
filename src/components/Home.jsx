@@ -9,6 +9,9 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch('data/data.json');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         setVideos(data);
       } catch (error) {
@@ -62,18 +65,22 @@ const Home = () => {
           <div className="videoListFirst">
             {filteredTrendingVideos.map((video, index) => (
               <div key={index} className="videoItem">
-                <img src={video.thumbnail?.trending?.large} alt={video.title} />
-                <div className="videoInfo">
-                  <p>{video.year} &#8226; 
-                    <span className='icon'>{video.category === 'Movie' ? (
-                     <img src="./icon-category-movie.svg" alt="Movie" /> 
-                     ) : ( 
-                     <img src="./icon-category-tv.svg" alt="TV Series" /> 
-                     )}</span> {video.category} &#8226; {video.rating}</p>
-                  <h2>{video.title}</h2>
-                  <button className='bookmark' onClick={() => handleBookmark(video)}>
-                  <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
-                  </button>
+                <div className="imageContainer">
+                  <img src={video.thumbnail?.trending?.large} alt={video.title} />
+                  <div className="overlay">
+                    <p>{video.year} &#8226; 
+                      <span className='icon'>{video.category === 'Movie' ? (
+                       <img src="./icon-category-movie.svg" alt="Movie" /> 
+                       ) : ( 
+                       <img src="./icon-category-tv.svg" alt="TV Series" /> 
+                       )}</span> {video.category} &#8226; {video.rating}</p>
+                    <h2>{video.title}</h2>
+                    <button className='bookmark' onClick={() => handleBookmark(video)}>
+                      <span className='bookmarkStyle'>
+                        <img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" />
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -110,4 +117,3 @@ const Home = () => {
 };
 
 export default Home;
-
