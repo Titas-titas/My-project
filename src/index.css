@@ -114,6 +114,9 @@
     .nav-item img {
         margin-bottom: 1.8em;
     }
+    .nav-item.selected {
+        filter: grayscale();
+    }
     .profile-container {
         margin-top: auto;
     }
