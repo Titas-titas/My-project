@@ -66,7 +66,7 @@ const Home = () => {
             {filteredTrendingVideos.map((video, index) => (
               <div key={index} className="videoItem">
                 <div className="imageContainer">
-                  <img src={video.thumbnail?.trending?.large} alt={video.title} />
+                  <img src={video.thumbnail?.trending?.large} alt={video.title} className='blure'/>
                   <div className="overlay">
                     <p>{video.year} &#8226; 
                       <span className='icon'>{video.category === 'Movie' ? (
@@ -80,6 +80,9 @@ const Home = () => {
                         <img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" />
                       </span>
                     </button>
+                    <a href='/' className="playButton">
+                      <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -105,7 +108,7 @@ const Home = () => {
                     <button className='bookmark' onClick={() => handleBookmark(video)}>
                       <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
                     </button>
-            
+
                 </div>
               </div>
             ))}

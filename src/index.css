@@ -115,7 +115,10 @@
         margin-bottom: 1.8em;
     }
     .nav-item.selected {
-        filter: grayscale();
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(346deg) brightness(103%) contrast(101%);
+    }
+    .nav-item img:hover{
+        filter: invert(32%) sepia(84%) saturate(1103%) hue-rotate(329deg) brightness(107%) contrast(99%);
     }
     .profile-container {
         margin-top: auto;
@@ -178,6 +181,25 @@
         display: flex;
         flex-direction: column;
         justify-content: end;
+      }
+
+      /*Play button*/
+      .playButton {
+        position: absolute;
+        top: 5.2em;
+        left: 9.7em;
+        display: none;
+        font-size: 1.1em;
+        background: #ffffff57;
+        border-radius: 30px;
+        padding: 0.4em;
+      }
+      .playButton img{
+        width: 30px;
+        display: inline;
+      }
+      .imageContainer:hover .playButton {
+        display: block;
       }
 
     /*Login and SignUp*/
@@ -289,11 +311,14 @@
             position: relative;
             display: inline-block;
         }
-        
         .imageContainer img {
             width: 60vh;
         }
         
+        .playButton img{
+            width: 30px;
+            display: inline;
+        }
 
         /*login and signup*/
         .login-container, .signup-container{
@@ -350,19 +375,34 @@
 
         /*HOME*//*Movies*//*TV*/
         .videoItem img, .movieItem img, .seriesItem img{
-            width: 16vh;
+            width: 18vh;
             border-radius: 15px;
         }
-
+        .overlay{
+            padding: 0.5em;
+        }
         /*Home Trending*/
         .imageContainer {
             position: relative;
             display: inline-block;
         }
-        
         .imageContainer img {
             width: 30vh;
         }
+
+        .playButton img{
+            width: 20px;
+        }
+
+        .playButton {
+            position: absolute;
+            top: 3.2em;
+            left: 6.3em;
+            display: none;
+            font-size: 0.8em;
+            border-radius: 30px;
+            padding: 0.4em;
+          }
 
         /*login and signup*/
         .login-container, .signup-container{
@@ -379,6 +419,7 @@
         /*text*/
         h2{
             font-size: 0.8em;
+            margin: 0;
         }
         p{
             font-size: 0.5em;
