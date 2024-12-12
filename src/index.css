@@ -177,7 +177,7 @@
       }
 
     /*Home Trending*/
-    
+
     .imageContainer {
         position: relative;
         display: inline-block;
@@ -217,7 +217,7 @@
 
       
 
-      .imageContainer:hover .playButton, .videoItem:hover .playButton2{
+      .imageContainer:hover .playButton, .videoItem:hover .playButton2, .movieItem:hover .playButton2, .seriesItem:hover .playButton2{
         display: block;
       }
 

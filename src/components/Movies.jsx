@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -56,7 +56,9 @@ const Movies = () => {
         <div className="movieList">
           {filteredMovies.map((movie, index) => (
             <div key={index} className="movieItem">
-              <img src={movie.thumbnail?.regular?.large} alt={movie.title} />
+              <Link>
+                <img src={movie.thumbnail?.regular?.large} alt={movie.title} />
+              </Link>
               <div className="movieInfo">
                 <p>{movie.year} &#8226; 
                   <span className='icon'>
@@ -66,6 +68,9 @@ const Movies = () => {
                 <button className='bookmark' onClick={() => handleBookmark(movie)}>
                 <span className='bookmarkStyle'><img src={movie.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark Icon" /></span>
                 </button>
+                <Link to='/' className="playButton2">
+                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                </Link>
               </div>
             </div>
           ))}

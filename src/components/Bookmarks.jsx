@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 
 const Bookmarks = () => {
   const [videos, setVideos] = useState([]);
@@ -61,7 +61,9 @@ const Bookmarks = () => {
           <div className="videoListSecond">
             {filteredBookmarkedMovies.map((video, index) => (
               <div key={index} className="videoItem">
-                <img src={video.thumbnail.regular.large} alt={video.title} />
+                <Link to='/'>
+                  <img src={video.thumbnail.regular.large} alt={video.title} />
+                </Link>
                 <div className="videoInfo">
                   <p>{video.year} &#8226; 
                     <span className='icon'>
@@ -73,6 +75,9 @@ const Bookmarks = () => {
                   <button className="bookmark" onClick={() => handleBookmark(video)}>
                     <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
                   </button>
+                  <Link to='/' className="playButton2">
+                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -83,7 +88,9 @@ const Bookmarks = () => {
           <div className="videoListSecond">
             {filteredBookmarkedSeries.map((video, index) => (
               <div key={index} className="videoItem">
-                <img src={video.thumbnail.regular.large} alt={video.title} />
+                <Link to='/'>
+                  <img src={video.thumbnail.regular.large} alt={video.title} />
+                </Link>
                 <div className="videoInfo">
                   <p>{video.year} &#8226; 
                     <span className='icon'>
@@ -95,6 +102,9 @@ const Bookmarks = () => {
                   <button className="bookmark" onClick={() => handleBookmark(video)}>
                   <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
                   </button>
+                  <Link to='/' className="playButton2">
+                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                  </Link>
                 </div>
               </div>
             ))}
