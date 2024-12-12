@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
@@ -65,26 +65,28 @@ const Home = () => {
           <div className="videoListFirst">
             {filteredTrendingVideos.map((video, index) => (
               <div key={index} className="videoItem">
-                <div className="imageContainer">
-                  <img src={video.thumbnail?.trending?.large} alt={video.title} className='blure'/>
-                  <div className="overlay">
-                    <p>{video.year} &#8226; 
-                      <span className='icon'>{video.category === 'Movie' ? (
-                       <img src="./icon-category-movie.svg" alt="Movie" /> 
-                       ) : ( 
-                       <img src="./icon-category-tv.svg" alt="TV Series" /> 
-                       )}</span> {video.category} &#8226; {video.rating}</p>
-                    <h2>{video.title}</h2>
-                    <button className='bookmark' onClick={() => handleBookmark(video)}>
-                      <span className='bookmarkStyle'>
-                        <img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" />
-                      </span>
-                    </button>
-                    <a href='/' className="playButton">
-                      <span><img src="./icon-play.svg" alt="Play" /> Play</span>
-                    </a>
+                  <div className="imageContainer">
+                    <Link to='/'>
+                      <img src={video.thumbnail?.trending?.large} alt={video.title} className='blure'/>
+                      <div className="overlay">
+                        <p>{video.year} &#8226; 
+                          <span className='icon'>{video.category === 'Movie' ? (
+                          <img src="./icon-category-movie.svg" alt="Movie" /> 
+                          ) : ( 
+                          <img src="./icon-category-tv.svg" alt="TV Series" /> 
+                          )}</span> {video.category} &#8226; {video.rating}</p>
+                        <h2>{video.title}</h2>
+                        <button className='bookmark' onClick={() => handleBookmark(video)}>
+                          <span className='bookmarkStyle'>
+                            <img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" />
+                          </span>
+                        </button>
+                        <span className="playButton">
+                          <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                        </span>
+                      </div>
+                    </Link>
                   </div>
-                </div>
               </div>
             ))}
           </div>
@@ -94,7 +96,9 @@ const Home = () => {
           <div className="videoListSecond">
             {filteredRecommendedVideos.map((video, index) => (
               <div key={index} className="videoItem">
-                <img src={video.thumbnail?.regular?.large} alt={video.title} />
+                <Link to='/'>
+                  <img src={video.thumbnail?.regular?.large} alt={video.title} className='blure'/>
+                </Link>
                 <div className="videoInfo">
                   <p>{video.year} &#8226; 
                     <span className='icon'>{video.category === 'Movie' ? (
@@ -104,11 +108,12 @@ const Home = () => {
                      )}
                      </span> {video.category} &#8226; {video.rating}</p>
                   <h2>{video.title}</h2>
-                  
-                    <button className='bookmark' onClick={() => handleBookmark(video)}>
-                      <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
-                    </button>
-
+                  <button className='bookmark' onClick={() => handleBookmark(video)}>
+                    <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                  </button>
+                  <Link to='/' className="playButton2">
+                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                  </Link>
                 </div>
               </div>
             ))}

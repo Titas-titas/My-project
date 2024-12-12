@@ -161,8 +161,23 @@
     .videoInfo, .seriesInfo, .movieInfo{
         margin-top: 0.5em;
     }
+    .playButton2 {
+        position: absolute;
+        top: 3.7em;
+        left: 5.8em;
+        display: none;
+        font-size: 1.1em;
+        background: #ffffff57;
+        border-radius: 30px;
+        padding: 0.4em;
+      }
+      .playButton2 img{
+        width: 30px;
+        display: inline;
+      }
 
     /*Home Trending*/
+    
     .imageContainer {
         position: relative;
         display: inline-block;
@@ -184,6 +199,7 @@
       }
 
       /*Play button*/
+
       .playButton {
         position: absolute;
         top: 5.2em;
@@ -198,7 +214,10 @@
         width: 30px;
         display: inline;
       }
-      .imageContainer:hover .playButton {
+
+      
+
+      .imageContainer:hover .playButton, .videoItem:hover .playButton2{
         display: block;
       }
 
@@ -305,19 +324,24 @@
         .videoItem img, .movieItem img, .seriesItem img{
             width: 25vh;
         }
+        .playButton2 {
+            top: 2em;
+            left: 3em;
+            padding: 0.4em;
+            font-size: 1.1em;
+        }
+        .playButton2 img{
+            width: 20px;
+        }
 
         /*Home Trending*/
-        .imageContainer {
-            position: relative;
-            display: inline-block;
-        }
         .imageContainer img {
             width: 60vh;
         }
         
+        /*play button*/
         .playButton img{
             width: 30px;
-            display: inline;
         }
 
         /*login and signup*/
@@ -381,11 +405,17 @@
         .overlay{
             padding: 0.5em;
         }
-        /*Home Trending*/
-        .imageContainer {
-            position: relative;
-            display: inline-block;
+        .playButton2 {
+            top: 2em;
+            left: 3em;
+            padding: 0.4em;
+            font-size: 0.8em;
         }
+        .playButton2 img{
+            width: 15px;
+        }
+
+        /*Home Trending*/
         .imageContainer img {
             width: 30vh;
         }
