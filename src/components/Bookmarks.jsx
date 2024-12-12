@@ -61,7 +61,7 @@ const Bookmarks = () => {
           <div className="videoListSecond">
             {filteredBookmarkedMovies.map((video, index) => (
               <div key={index} className="videoItem">
-                <Link to='/'>
+                <Link to='/' className='hoverStyle'>
                   <img src={video.thumbnail.regular.large} alt={video.title} />
                 </Link>
                 <div className="videoInfo">
@@ -88,7 +88,7 @@ const Bookmarks = () => {
           <div className="videoListSecond">
             {filteredBookmarkedSeries.map((video, index) => (
               <div key={index} className="videoItem">
-                <Link to='/'>
+                <Link to='/' className='hoverStyle'>
                   <img src={video.thumbnail.regular.large} alt={video.title} />
                 </Link>
                 <div className="videoInfo">

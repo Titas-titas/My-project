@@ -56,7 +56,7 @@ const TVSeries = () => {
         <div className="seriesList">
           {filteredSeries.map((series, index) => (
             <div key={index} className="seriesItem">
-              <Link to='/'>
+              <Link to='/' className='hoverStyle'>
                 <img src={series.thumbnail?.regular?.large} alt={series.title} />
               </Link>
               <div className="seriesInfo">

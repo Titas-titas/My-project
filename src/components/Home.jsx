@@ -93,7 +93,7 @@ const Home = () => {
           <div className="videoListSecond">
             {filteredRecommendedVideos.map((video, index) => (
               <div key={index} className="videoItem">
-                <Link to='/'>
+                <Link to='/' className='hoverStyle'>
                   <img src={video.thumbnail?.regular?.large} alt={video.title} className='blure'/>
                 </Link>
                 <div className="videoInfo">

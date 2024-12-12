@@ -56,7 +56,7 @@ const Movies = () => {
         <div className="movieList">
           {filteredMovies.map((movie, index) => (
             <div key={index} className="movieItem">
-              <Link>
+              <Link className='hoverStyle'>
                 <img src={movie.thumbnail?.regular?.large} alt={movie.title} />
               </Link>
               <div className="movieInfo">
