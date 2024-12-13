@@ -1,15 +1,17 @@
 import { Routes, Route, Link, useLocation } from "react-router";
 import Bookmarks from "./components/Bookmarks";
-import Movie from "./components/Movies";
+import Movies from "./components/Movies";
 import TVSeries from "./components/TVSeries";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import NotFound from "./components/NotFound";
 import { useState } from "react";
 
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login" || location.pathname === "/signup";
+  const isNotFoundPage = location.pathname === "/404";
   const [selectedIcon, setSelectedIcon] = useState(location.pathname);
 
   const handleIconClick = (path) => {
@@ -18,8 +20,8 @@ function App() {
 
   return (
     <>
-      <div className={!isLoginPage ? "header" : ""}>
-        {!isLoginPage && (
+      <div className={!isLoginPage && !isNotFoundPage ? "header" : ""}>
+        {!isLoginPage && !isNotFoundPage && (
           <div className="Bar">
             <div className="logo">
               <img src="/logo.svg" alt="Logo" />
@@ -62,14 +64,16 @@ function App() {
           </div>
         )}
 
-        <div className={!isLoginPage ? "films" : ""}>
+        <div className={!isLoginPage && !isNotFoundPage ? "films" : ""}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movies" element={<Movie />} />
+            <Route path="/movies" element={<Movies />} />
             <Route path="/series" element={<TVSeries />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
