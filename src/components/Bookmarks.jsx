@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
 const Bookmarks = () => {
-    const [videos, setVideos] = useState(() => {
-        const savedVideos = localStorage.getItem('videos');
-        return savedVideos ? JSON.parse(savedVideos) : [];
-    });
+    const [videos, setVideos] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
+
+    useEffect(() => {
+        const savedVideos = localStorage.getItem('videos');
+        if (savedVideos) {
+            setVideos(JSON.parse(savedVideos));
+        }
+    }, []);
 
     const searchQuery = searchParams.get('search') || "";
 
@@ -20,18 +24,18 @@ const Bookmarks = () => {
         const updatedVideos = videos.map((item) =>
             item.title === video.title ? updatedVideo : item
         );
-        
+
         setVideos(updatedVideos);
         localStorage.setItem('videos', JSON.stringify(updatedVideos));
     };
 
-    const bookmarked_Videos = videos.filter(video => video.isBookmarked);
+    const bookmarkedVideos = videos.filter(video => video.isBookmarked);
 
-    const filteredBookmarkedMovies = bookmarked_Videos.filter(video =>
+    const filteredBookmarkedMovies = bookmarkedVideos.filter(video =>
         video.category === 'Movie' && video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    const filteredBookmarkedSeries = bookmarked_Videos.filter(video =>
+    const filteredBookmarkedSeries = bookmarkedVideos.filter(video =>
         video.category === 'TV Series' && video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -40,9 +44,9 @@ const Bookmarks = () => {
             <div className="videos">
                 <p className='search'>
                     <img src="./icon-search.svg" alt="Search" />
-                    <input 
-                        type="text" 
-                        placeholder='Search for bookmarked shows' 
+                    <input
+                        type="text"
+                        placeholder='Search for bookmarked shows'
                         value={searchQuery}
                         onChange={handleSearch}
                     />
@@ -56,18 +60,18 @@ const Bookmarks = () => {
                                     <img src={video.thumbnail.regular.large} alt={video.title} />
                                 </Link>
                                 <div className="videoInfo">
-                                    <p>{video.year} &#8226; 
-                                    <span className='icon'>
-                                        <img src="./icon-category-movie.svg" alt="Movie" />
-                                    </span> 
-                                    {video.category} &#8226; {video.rating}
+                                    <p>{video.year} &#8226;
+                                        <span className='icon'>
+                                            <img src="./icon-category-movie.svg" alt="Movie" />
+                                        </span>
+                                        {video.category} &#8226; {video.rating}
                                     </p>
                                     <h2>{video.title}</h2>
                                     <button className="bookmark" onClick={() => handleBookmark(video)}>
-                                    <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                                        <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
                                     </button>
                                     <Link to='/' className="playButton2">
-                                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                        <span><img src="./icon-play.svg" alt="Play" /> Play</span>
                                     </Link>
                                 </div>
                             </div>
@@ -83,18 +87,18 @@ const Bookmarks = () => {
                                     <img src={video.thumbnail.regular.large} alt={video.title} />
                                 </Link>
                                 <div className="videoInfo">
-                                    <p>{video.year} &#8226; 
-                                    <span className='icon'>
-                                        <img src="./icon-category-tv.svg" alt="TV Series" />
-                                    </span> 
-                                    {video.category} &#8226; {video.rating}
+                                    <p>{video.year} &#8226;
+                                        <span className='icon'>
+                                            <img src="./icon-category-tv.svg" alt="TV Series" />
+                                        </span>
+                                        {video.category} &#8226; {video.rating}
                                     </p>
                                     <h2>{video.title}</h2>
                                     <button className="bookmark" onClick={() => handleBookmark(video)}>
-                                    <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                                        <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
                                     </button>
                                     <Link to='/' className="playButton2">
-                                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                        <span><img src="./icon-play.svg" alt="Play" /> Play</span>
                                     </Link>
                                 </div>
                             </div>

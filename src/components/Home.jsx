@@ -13,7 +13,10 @@ const Home = () => {
             try {
                 const response = await fetch('data/data.json');
                 const data = await response.json();
-                setVideos(data);
+                const savedVideos = localStorage.getItem('videos');
+                const combinedData = savedVideos ? mergeVideoData(JSON.parse(savedVideos), data) : data;
+                setVideos(combinedData);
+                localStorage.setItem('videos', JSON.stringify(combinedData));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -21,6 +24,16 @@ const Home = () => {
 
         fetchData();
     }, []);
+
+    const mergeVideoData = (savedVideos, newVideos) => {
+        const videoMap = new Map(savedVideos.map(video => [video.title, video]));
+        newVideos.forEach(video => {
+            if (!videoMap.has(video.title)) {
+                videoMap.set(video.title, video);
+            }
+        });
+        return Array.from(videoMap.values());
+    };
 
     const searchQuery = searchParams.get('search') || "";
 
@@ -34,7 +47,7 @@ const Home = () => {
         const updatedVideos = videos.map((item) =>
             item.title === video.title ? updatedVideo : item
         );
-        
+
         setVideos(updatedVideos);
         localStorage.setItem('videos', JSON.stringify(updatedVideos));
     };
