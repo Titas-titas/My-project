@@ -11,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('data/data.json');
+                const response = await fetch('data/films.json');
                 const data = await response.json();
                 const savedVideos = localStorage.getItem('videos');
                 const combinedData = savedVideos ? mergeVideoData(JSON.parse(savedVideos), data) : data;

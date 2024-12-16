@@ -11,7 +11,7 @@ const TVSeries = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('data/data.json');
+                const response = await fetch('data/films.json');
                 const data = await response.json();
                 const seriesData = data.filter(video => video.category === 'TV Series');
                 const savedVideos = localStorage.getItem('videos');
