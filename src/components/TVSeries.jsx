@@ -15,7 +15,7 @@ const TVSeries = () => {
                 const data = await response.json();
                 const seriesData = data.filter(video => video.category === 'TV Series');
                 const savedVideos = localStorage.getItem('videos');
-                const combinedData = savedVideos ? mergeVideoData(JSON.parse(savedVideos), seriesData) : seriesData;
+                const combinedData = savedVideos ? mergeVideoData(JSON.parse(savedVideos), seriesData).filter(video => video.category === 'TV Series') : seriesData;
                 setTVSeries(combinedData);
                 localStorage.setItem('videos', JSON.stringify(combinedData));
             } catch (error) {
@@ -26,16 +26,6 @@ const TVSeries = () => {
         fetchData();
     }, []);
 
-    const mergeVideoData = (savedVideos, newVideos) => {
-        const videoMap = new Map(savedVideos.map(video => [video.title, video]));
-        newVideos.forEach(video => {
-            if (!videoMap.has(video.title)) {
-                videoMap.set(video.title, video);
-            }
-        });
-        return Array.from(videoMap.values()).filter(video => video.category === 'TV Series');
-    };
-
     const searchQuery = searchParams.get('search') || "";
 
     const handleSearch = (e) => {
@@ -43,6 +33,19 @@ const TVSeries = () => {
         setSearchParams(value ? { search: value } : {});
     };
 
+    const mergeVideoData = (savedVideos, newVideos) => {
+        const videoMap = new Map(savedVideos.map(video => [video.title, video]));
+        newVideos.forEach(video => {
+            if (!videoMap.has(video.title)) {
+                videoMap.set(video.title, video);
+            } else {
+                const savedVideo = videoMap.get(video.title);
+                videoMap.set(video.title, { ...video, isBookmarked: savedVideo.isBookmarked });
+            }
+        });
+        return Array.from(videoMap.values());
+    };
+    
     const handleBookmark = (series) => {
         const updatedSeries = { ...series, isBookmarked: !series.isBookmarked };
         const updatedTVSeries = tvSeries.map((item) =>
