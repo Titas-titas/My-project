@@ -64,6 +64,8 @@ const Movies = () => {
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const searchResultsCount = filteredMovies.length;
+
     return (
         <>
             <div className="movies">
@@ -76,7 +78,9 @@ const Movies = () => {
                         onChange={handleSearch}
                     />
                 </p>
-                <h1>Movies</h1>
+                {searchQuery && (
+                    <p className='text'>Found {searchResultsCount} results for ‘{searchQuery}’</p>
+                )}
                 <div className="movieList">
                     {filteredMovies.map((movie, index) => (
                         <div key={index} className="movieItem">

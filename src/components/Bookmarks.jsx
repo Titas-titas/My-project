@@ -39,6 +39,8 @@ const Bookmarks = () => {
         video.category === 'TV Series' && video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const searchResultsCount = filteredBookmarkedMovies.length + filteredBookmarkedSeries.length;
+
     return (
         <>
             <div className="videos">
@@ -51,8 +53,68 @@ const Bookmarks = () => {
                         onChange={handleSearch}
                     />
                 </p>
-                <div>
-                    <h1>Bookmarked Movies</h1>
+                {searchQuery && (
+                    <p className='text'>Found {searchResultsCount} results for ‘{searchQuery}’</p>
+                )}
+                {!searchQuery && (
+                    <>
+                        <div>
+                            <h1>Bookmarked Movies</h1>
+                            <div className="videoListSecond">
+                                {filteredBookmarkedMovies.map((video, index) => (
+                                    <div key={index} className="videoItem">
+                                        <Link to='/' className='hoverStyle'>
+                                            <img src={video.thumbnail.regular.large} alt={video.title} />
+                                        </Link>
+                                        <div className="videoInfo">
+                                            <p>{video.year} &#8226;
+                                                <span className='icon'>
+                                                    <img src="./icon-category-movie.svg" alt="Movie" />
+                                                </span>
+                                                {video.category} &#8226; {video.rating}
+                                            </p>
+                                            <h2>{video.title}</h2>
+                                            <button className="bookmark" onClick={() => handleBookmark(video)}>
+                                                <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                                            </button>
+                                            <Link to='/' className="playButton2">
+                                                <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <h1>Bookmarked TV Series</h1>
+                            <div className="videoListSecond">
+                                {filteredBookmarkedSeries.map((video, index) => (
+                                    <div key={index} className="videoItem">
+                                        <Link to='/' className='hoverStyle'>
+                                            <img src={video.thumbnail.regular.large} alt={video.title} />
+                                        </Link>
+                                        <div className="videoInfo">
+                                            <p>{video.year} &#8226;
+                                                <span className='icon'>
+                                                    <img src="./icon-category-tv.svg" alt="TV Series" />
+                                                </span>
+                                                {video.category} &#8226; {video.rating}
+                                            </p>
+                                            <h2>{video.title}</h2>
+                                            <button className="bookmark" onClick={() => handleBookmark(video)}>
+                                                <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                                            </button>
+                                            <Link to='/' className="playButton2">
+                                                <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </>
+                )}
+                {searchQuery && searchResultsCount > 0 && (
                     <div className="videoListSecond">
                         {filteredBookmarkedMovies.map((video, index) => (
                             <div key={index} className="videoItem">
@@ -76,11 +138,6 @@ const Bookmarks = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-                </div>
-                <div>
-                    <h1>Bookmarked TV Series</h1>
-                    <div className="videoListSecond">
                         {filteredBookmarkedSeries.map((video, index) => (
                             <div key={index} className="videoItem">
                                 <Link to='/' className='hoverStyle'>
@@ -104,7 +161,7 @@ const Bookmarks = () => {
                             </div>
                         ))}
                     </div>
-                </div>
+                )}
             </div>
         </>
     );

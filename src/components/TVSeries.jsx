@@ -64,6 +64,8 @@ const TVSeries = () => {
         series.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const searchResultsCount = filteredSeries.length;
+
     return (
         <>
             <div className="tv-series">
@@ -76,7 +78,9 @@ const TVSeries = () => {
                         onChange={handleSearch}
                     />
                 </p>
-                <h1>TV Series</h1>
+                {searchQuery && (
+                    <p className='text'>Found {searchResultsCount} results for ‘{searchQuery}’</p>
+                )}
                 <div className="seriesList">
                     {filteredSeries.map((series, index) => (
                         <div key={index} className="seriesItem">

@@ -63,6 +63,9 @@ const Home = () => {
         video.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    const searchResults = [...filteredTrendingVideos, ...filteredRecommendedVideos];
+    const searchResultsCount = searchResults.length;
+
     return (
         <>
             <div className="videos">
@@ -75,15 +78,51 @@ const Home = () => {
                         onChange={handleSearch}
                     />
                 </p>
-                <div>
-                    <h1>Trending</h1>
-                    <div className="videoListFirst">
-                        {filteredTrendingVideos.map((video, index) => (
-                            <div key={index} className="videoItem">
-                                <div className="imageContainer">
-                                    <Link to='/'>
-                                        <img src={video.thumbnail?.trending?.large} alt={video.title} className='blure'/>
-                                        <div className="overlay">
+                {searchQuery && (
+                    <p className='text'>Found {searchResultsCount} results for ‘{searchQuery}’</p>
+                )}
+                {!searchQuery && (
+                    <>
+                        <div>
+                            <h1>Trending</h1>
+                            <div className="videoListFirst">
+                                {trending_Videos.map((video, index) => (
+                                    <div key={index} className="videoItem">
+                                        <div className="imageContainer">
+                                            <Link to='/'>
+                                                <img src={video.thumbnail?.trending?.large} alt={video.title} className='blure'/>
+                                                <div className="overlay">
+                                                    <p>{video.year} &#8226; 
+                                                    <span className='icon'>{video.category === 'Movie' ? (
+                                                        <img src="./icon-category-movie.svg" alt="Movie" /> 
+                                                    ) : ( 
+                                                        <img src="./icon-category-tv.svg" alt="TV Series" /> 
+                                                    )}</span> {video.category} &#8226; {video.rating}</p>
+                                                    <h2>{video.title}</h2>
+                                                    <button className='bookmark' onClick={() => handleBookmark(video)}>
+                                                        <span className='bookmarkStyle'>
+                                                        <img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" />
+                                                        </span>
+                                                    </button>
+                                                    <span className="playButton">
+                                                        <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <h1>Recommended for you</h1>
+                            <div className="videoListSecond">
+                                {recommended_Videos.map((video, index) => (
+                                    <div key={index} className="videoItem">
+                                        <Link to='/' className='hoverStyle'>
+                                            <img src={video.thumbnail?.regular?.large} alt={video.title} className='blure'/>
+                                        </Link>
+                                        <div className="videoInfo">
                                             <p>{video.year} &#8226; 
                                             <span className='icon'>{video.category === 'Movie' ? (
                                                 <img src="./icon-category-movie.svg" alt="Movie" /> 
@@ -92,47 +131,44 @@ const Home = () => {
                                             )}</span> {video.category} &#8226; {video.rating}</p>
                                             <h2>{video.title}</h2>
                                             <button className='bookmark' onClick={() => handleBookmark(video)}>
-                                                <span className='bookmarkStyle'>
-                                                <img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" />
-                                                </span>
+                                            <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
                                             </button>
-                                            <span className="playButton">
-                                                <span><img src="./icon-play.svg" alt="Play" /> Play</span>
-                                            </span>
+                                            <Link to='/' className="playButton2">
+                                            <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                            </Link>
                                         </div>
-                                    </Link>
-                                </div>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                </div>
-                <div>
-                    <h1>Recommended for you</h1>
+                        </div>
+                    </>
+                )}
+                {searchQuery && searchResults.length > 0 && (
                     <div className="videoListSecond">
-                        {filteredRecommendedVideos.map((video, index) => (
+                        {searchResults.map((video, index) => (
                             <div key={index} className="videoItem">
-                                <Link to='/' className='hoverStyle'>
-                                    <img src={video.thumbnail?.regular?.large} alt={video.title} className='blure'/>
-                                </Link>
-                                <div className="videoInfo">
-                                    <p>{video.year} &#8226; 
-                                    <span className='icon'>{video.category === 'Movie' ? (
-                                        <img src="./icon-category-movie.svg" alt="Movie" /> 
-                                    ) : ( 
-                                        <img src="./icon-category-tv.svg" alt="TV Series" /> 
-                                    )}</span> {video.category} &#8226; {video.rating}</p>
-                                    <h2>{video.title}</h2>
-                                    <button className='bookmark' onClick={() => handleBookmark(video)}>
-                                    <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
-                                    </button>
-                                    <Link to='/' className="playButton2">
-                                    <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                    <Link to='/' className='hoverStyle'>
+                                        <img src={video.thumbnail?.regular?.large} alt={video.title} className='blure'/>
                                     </Link>
-                                </div>
+                                    <div className="videoInfo">
+                                        <p>{video.year} &#8226; 
+                                        <span className='icon'>{video.category === 'Movie' ? (
+                                            <img src="./icon-category-movie.svg" alt="Movie" /> 
+                                        ) : ( 
+                                            <img src="./icon-category-tv.svg" alt="TV Series" /> 
+                                        )}</span> {video.category} &#8226; {video.rating}</p>
+                                        <h2>{video.title}</h2>
+                                        <button className='bookmark' onClick={() => handleBookmark(video)}>
+                                            <span className='bookmarkStyle'><img src={video.isBookmarked ? "./icon-bookmark-full.svg" : "./icon-bookmark-empty.svg"} alt="Bookmark" /></span>
+                                        </button>
+                                        <Link to='/' className="playButton2">
+                                            <span><img src="./icon-play.svg" alt="Play" /> Play</span>
+                                        </Link>
+                                    </div>
                             </div>
                         ))}
                     </div>
-                </div>
+                )}
             </div>
         </>
     );
