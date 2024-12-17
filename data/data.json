@@ -4,6 +4,11 @@
       "id": "5225",
       "email": "ema@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "b152",
+      "email": "baget.baget@gmail.com",
+      "password": "bob123456"
     }
   ]
 }
