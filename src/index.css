@@ -143,7 +143,8 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        padding: 2em;
+        padding-left:1.5em;
+        padding-top: 2em;
     }
 
     /*HOME*//*Movies*//*TV*/
@@ -345,7 +346,8 @@
             padding: 0.3em;
         }
         .films {
-            padding: 1em;
+            padding-left: 0.5em;
+            padding-top: 1em;
         }
         .nav-item {
             text-align: center;

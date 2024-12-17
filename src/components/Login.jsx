@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { getAllData } from '../helpers/get';
 
 const Login = () => {
@@ -16,7 +16,7 @@ const Login = () => {
 
       if (user) {
         alert('Login successful');
-        navigate('/home');
+        navigate('/');
       } else {
         alert('Invalid email or password');
       }

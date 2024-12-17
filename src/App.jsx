@@ -28,7 +28,7 @@ function App() {
             </div>
             <div className="grupe">
               <Link
-                to="/home"
+                to="/"
                 className={`nav-item ${selectedIcon === "/" ? "selected" : ""}`}
                 onClick={() => handleIconClick("/")}
               >
@@ -57,7 +57,7 @@ function App() {
               </Link>
             </div>
             <div className="profile-container">
-              <Link to="/">
+              <Link to="/login">
                 <img src="/image-avatar.png" alt="Profile" className="profile-picture" />
               </Link>
             </div>
@@ -66,12 +66,13 @@ function App() {
 
         <div className={!isLoginPage && !isNotFoundPage ? "films" : ""}>
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/series" element={<TVSeries />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
-            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/404" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
