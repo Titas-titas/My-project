@@ -15,7 +15,6 @@ const Login = () => {
       const user = users.find(u => u.email === email && u.password === password);
 
       if (user) {
-        alert('Login successful');
         navigate('/');
       } else {
         alert('Invalid email or password');
@@ -26,34 +25,37 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div><img src="./logo.svg" alt="Logo" className="login-logo" /></div>
-      <div className="login-box">
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='Email address'
-              required
-            />
-          </div>
-          <div className="input-group">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Password'
-              required
-            />
-          </div>
-          <button type="submit" className="login-button">Login to your account</button>
-        </form>
-        <p className="signup-link">Don&#96;t have an account? <Link to="/signup">Sign Up</Link></p>
+    <>
+      <Link to="/" className='btn-exit'><span>X</span></Link>
+      <div className="login-container">
+        <div><img src="./logo.svg" alt="Logo" className="login-logo" /></div>
+        <div className="login-box">
+          <h2>Login</h2>
+          <form onSubmit={handleLogin}>
+            <div className="input-group">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='Email address'
+                required
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Password'
+                required
+              />
+            </div>
+            <button type="submit" className="login-button">Login to your account</button>
+          </form>
+          <p className="signup-link">Don&#96;t have an account? <Link to="/signup">Sign Up</Link></p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

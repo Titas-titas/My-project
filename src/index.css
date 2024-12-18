@@ -69,6 +69,11 @@
     .btn:hover{
         @apply TDarkBlue bg-white;
     }
+
+
+    .btn-exit{
+        @apply TGrayBlue p-2 m-1 text-2xl;
+    }
 }
 
 @layer utilities{

@@ -1,14 +1,25 @@
 {
   "data": [
     {
+      "username": "Ema555",
       "id": "5225",
       "email": "ema@gmail.com",
-      "password": "123456"
+      "password": "123456",
+      "isAdmin": true
     },
     {
-      "id": "b152",
-      "email": "baget.baget@gmail.com",
-      "password": "bob123456"
+      "username": "UserBob",
+      "id": "6c87",
+      "email": "bob@gmail.com",
+      "password": "123456789",
+      "isAdmin": false
+    },
+    {
+      "id": "5b41",
+      "username": "EmmaGood",
+      "email": "emma@gmail.com",
+      "password": "3333333",
+      "isAdmin": false
     }
   ]
 }
