@@ -2,15 +2,38 @@ import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 
 const Bookmarks = () => {
-    const [videos, setVideos] = useState([]);
+    const [videos, setVideos] = useState(() => {
+        const savedVideos = localStorage.getItem('videos');
+        return savedVideos ? JSON.parse(savedVideos) : [];
+    });
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        const savedVideos = localStorage.getItem('videos');
-        if (savedVideos) {
-            setVideos(JSON.parse(savedVideos));
-        }
+        const fetchData = async () => {
+            try {
+                const response = await fetch('data/films.json');
+                const data = await response.json();
+                const savedVideos = localStorage.getItem('videos');
+                const combinedData = savedVideos ? mergeVideoData(JSON.parse(savedVideos), data) : data;
+                setVideos(combinedData);
+                localStorage.setItem('videos', JSON.stringify(combinedData));
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
     }, []);
+
+    const mergeVideoData = (savedVideos, newVideos) => {
+        const videoMap = new Map(savedVideos.map(video => [video.title, video]));
+        newVideos.forEach(video => {
+            if (!videoMap.has(video.title)) {
+                videoMap.set(video.title, video);
+            }
+        });
+        return Array.from(videoMap.values());
+    };
 
     const searchQuery = searchParams.get('search') || "";
 
